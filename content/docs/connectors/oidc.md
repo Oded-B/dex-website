@@ -106,6 +106,16 @@ connectors:
       # The set claim is used as groups.
       # Default: groups
       # groups: "cognito:groups"
+     # If you use this connecter to authenticate some workload that support JWT based identity(see https://github.com/dexidp/dex/pull/2806) with static claims.
+     # And your upstream service doesn't support complex policy enforcment, you might need to create a new group based on some of the existing claims: (see https://github.com/dexidp/dex/pull/3056).
+     # This next configuration will create a new group named "bk::value_of_claim_foo::value_of_claim_bar"
+     claimModifications:
+       # newGroupsFromClaims:
+       #   - claimList:
+       #       - "name_of_claim_foo"
+       #       - "name_of_claim_bar"
+       #     delimiter: "::"
+       #    prefix: "bk"
 ```
 
 [oidc-doc]: openid-connect.md
