@@ -42,7 +42,7 @@ connectors:
     # following field.
     #
     # basicAuthUnsupported: true
-    
+
     # List of additional scopes to request in token response
     # Default is profile and email
     # Full list at https://dexidp.io/docs/custom-scopes-claims-clients/
@@ -54,7 +54,7 @@ connectors:
     # Some providers return claims without "email_verified", when they had no usage of emails verification in enrollment process
     # or if they are acting as a proxy for another IDP etc AWS Cognito with an upstream SAML IDP
     # This can be overridden with the below option
-    # insecureSkipEmailVerified: true 
+    # insecureSkipEmailVerified: true
 
     # Groups claims (like the rest of oidc claims through dex) only refresh when the id token is refreshed
     # meaning the regular refresh flow doesn't update the groups claim. As such by default the oidc connector
@@ -81,11 +81,11 @@ connectors:
     # The acr_values variable specifies the Authentication Context Class Values within
     # the Authentication Request that the Authorization Server is being requested to process
     # from this Client.
-    # acrValues: 
+    # acrValues:
     #  - <value>
     #  - <value>
 
-    # For offline_access, the prompt parameter is set by default to "prompt=consent". 
+    # For offline_access, the prompt parameter is set by default to "prompt=consent".
     # However this is not supported by all OIDC providers, some of them support different
     # value for prompt, like "prompt=login" or "prompt=none"
     # promptType: consent
@@ -106,14 +106,15 @@ connectors:
       # The set claim is used as groups.
       # Default: groups
       # groups: "cognito:groups"
-     # If you use this connecter to authenticate some workload that support JWT based identity(see https://github.com/dexidp/dex/pull/2806) with static claims.
-     # And your upstream service doesn't support complex policy enforcment, you might need to create a new group based on some of the existing claims: (see https://github.com/dexidp/dex/pull/3056).
+
+     # If you use this connector to authenticate workloads that support JWT based identity(see https://github.com/dexidp/dex/pull/2806),
+     # and no single claim in the JWT provide the needed granularity for assigning permission, you might need to create a new group based on multiple claims: (see https://github.com/dexidp/dex/pull/3056).
      # This next configuration will create a new group named "bk::value_of_claim_foo::value_of_claim_bar"
      claimModifications:
        # newGroupsFromClaims:
        #   - claimList:
-       #       - "name_of_claim_foo"
-       #       - "name_of_claim_bar"
+       #       - "claim_foo"
+       #       - "claim_bar"
        #     delimiter: "::"
        #    prefix: "bk"
 ```
