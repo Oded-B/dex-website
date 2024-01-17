@@ -109,7 +109,7 @@ connectors:
 
      # If you use this connector to authenticate workloads that support JWT based identity(see https://github.com/dexidp/dex/pull/2806),
      # and no single claim in the JWT provide the needed granularity for assigning permission, you might need to create a new group based on multiple claims: (see https://github.com/dexidp/dex/pull/3056).
-     # This next configuration will create a new group named "bk::value_of_claim_foo::value_of_claim_bar"
+     # This next configuration will create a new group named "bk::[VALUE_OF_CLAIM_FOO]::[VALUE_OF_CLAIM_BAR]"
      claimModifications:
        # newGroupsFromClaims:
        #   - claimList:
